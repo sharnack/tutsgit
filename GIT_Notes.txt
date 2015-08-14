@@ -188,7 +188,7 @@ Retrieve a URL of this remote repo
 
 ADDING A REMOTE REPO
 
-$ git remote add repo_name https://github.com/username/reponame.git
+$ git remote add origin https://github.com/username/reponame.git
 --> URL provided by github after creating repo online
 
 $ git remote -v
@@ -198,7 +198,7 @@ $ git remote -v
 
 PUSHING TO REMOTE REPO
 
-$ git push -u remote_repo_name local_branch_name
+$ git push -u origin local_branch_name
 --> pushes the whole local repo to the remote repo
     asks for username and password for github.com
     PW can be cached -- help.github.com/articles/set-up-git
@@ -237,6 +237,124 @@ $ git push -u <name> <branch>
 ====================
 --- L E V E L  3 ---
 ====================
+
+
+
+COLLABORATING
+
+So, I created a local repo and pushed this one to the remote.
+A new co-worker joins the team and wants a copy.
+How do we start collaborating?
+
+• Go to github.
+• Go to the repo
+• copy the repo's URL
+
+$ git clone https://github.com/username/reponame
+--> creates a local directory with that repository
+    name of folder will be name of repo on github.com
+
+$ git clone https://github.com/username/reponame own_name
+--> creates local directory named "own_name"
+
+
+
+BRANCHING OUT
+
+The co-worker needs to work on a feature that will take some time.
+To do so we open up a new branch.
+
+$ git branch <name>
+--> new branch created from master with own name
+
+$ git branch
+--> show which branch currently on
+
+
+
+SWITCHING TO A BRANCH
+
+After creating a new branch the HEAD is still on master.
+You want to junmp to the new branch.
+
+$ git checkout <newBranch>
+--> switch to branch "newBranch"
+    HEAD is now on "newBranch"
+
+
+
+WORKING ON A BRANCH
+
+$ echo "Hello World" > newFile.txt
+--> creates the file newFile.txt with the text "Hello World" in it
+
+• add this file to the stage
+• add a commit
+this commit will be added to our new timeline/branch, not to master
+
+if you move back to branch master and do $ ls to list all files, you
+will NOT see newFile.txt
+
+
+
+MERGING BRANCHES FAST-FORWARD
+
+$ git checkout master
+--> switch to branch master
+
+$ git merge newBranch
+--> brings the changes from newBranch into master
+
+within the message git gives back afterwards in the terminal:
+if it says "Fast-forward", what happened is that it was very easy 
+for git to merge the branches together, BECAUSE nothing changed on
+branch master while we worked on branch newBranch.
+
+
+
+BRANCH CLEAN UP
+
+when done with a branch, remove it.
+
+$ git branch -d newBranch
+--> remove branch newBranch
+
+
+
+CREATE AND CHECKOUT IN 1 STEP
+
+$ git checkout -b newBranch
+--> creates and checks out branch
+
+
+
+NON FAST-FORWARD MERGE
+
+You do some work on the new branch and do commits.
+While doing that you have to go back to the master and fix something.
+
+$ git checkout master 
+--> switch to branch master
+
+$ git pull
+--> pull from remote to make sure you have latest changes.
+
+Fixing all files.
+Do commits.
+
+$ git push
+--> push local repo to remote
+
+$ git checkout newBranch
+--> switch back to newBranch
+
+finish what you have to do
+then switch back to branch master
+
+$ git checkout master
+
+
+
 
 
 

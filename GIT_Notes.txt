@@ -1,0 +1,274 @@
+GIT REAL
+<codeschool>
+
+
+====================
+--- L E V E L  1 ---
+====================
+
+
+Git is a Distributed Version Control System (DVCS)
+Distributed means that everybody has a complete copy of the repository.
+The advantages are:
+• you can make commits really quickly
+• you can work offline
+• since everybody has a copy, reduced danger of losing the data
+
+
+
+GIT HELP
+
+$ git help
+--> gives complete list of the commands
+
+$ git help <command>
+--> shows documentation for the specific command
+
+
+
+SETTING UP GIT
+
+$ git config --global user.name "Your Name"
+--> so people can be associated with the different commits
+
+$ git condfig --global user.email your.name@mail.com
+--> your email adress
+
+$ git config --global color.ui true
+--> colors up the command line
+
+
+
+STARTING A REPO
+
+$ mkdir any_name
+--> creates a directory locally on the computer named "any_name"
+
+$ cd any_name
+--> 'change directory' "any_name" is current working driectory
+
+$ git init
+--> initializes a local Git repository in current directory
+    git metadata is store in hidden file (/Users/SH/any_name/.git/)
+
+
+
+GIT WORKFLOW
+
+In general:
+create a file - work on it - add to staging area - commit
+work in file - add another file - add both to staging area - commit
+
+$ git status 
+--> check whath as changed since last commit
+
+$ git add file.txt
+--> file.txt gets added to the staging area
+
+$ git commit -m "Create a file"
+--> creates commit, kind of snapshot of the stage, and adds it to the
+    timeline
+    the stuff in the quotes is the commit message that gives a short
+    explanation of the changes that have been made (use present tense)
+
+
+
+GIT TIMELINE HISTORY
+
+$ git log
+--> shows a history of all commits in the repository according 
+    to the timeline
+
+
+
+DIFFERENT WAYS TO ADD
+
+$ git add file1.txt file2.txt file3.txt
+--> add the list of files
+
+$ git add --all
+--> add all files
+
+$ git add *.txt
+--> add all txt files in current directory
+
+$ git add docs/*.txt
+--> add all txt files in docs directory
+
+$ git add docs/
+--> add all files in docs directory
+
+$ git add "*.txt"
+--> add all txt files in the WHOLE project
+
+
+
+
+
+
+====================
+--- L E V E L  2 ---
+====================
+
+
+GIT DIFF
+
+$ git diff
+--> show UNSTAGED differences since last commit
+
+$ git diff --staged
+--> show STAGED differences
+
+
+
+UNSTAGING FILES
+
+$ git reset HEAD file.txt
+--> remove file.txt from staging area
+    HEAD refers to last commit on the branch/timeline you are on
+
+
+
+DISCARD CHANGES
+
+$ git checkout -- file.txt
+--> undo all changes within file.txt since last commit
+
+
+
+SKIP STAGING AND COMMIT
+
+$ git commit -a -m "Commit Message Here"
+--> adds the changes from all (-a) tracked files to the stage and 
+    commits them to the branch/timeline
+    (Does NOT add new/untracked files)
+
+
+
+UNDOING A COMMIT
+
+$ git reset --soft HEAD^
+--> Removes everything from the last commit back onto the stage
+    HEAD^ means move to commit before HEAD
+
+
+
+ADDING TO A COMMIT
+
+$ git add file2.txt
+--> adds file2.txt to the stage (can be more than one file)
+
+$ git commit --amend -m "Commit Message Here"
+--> adds all stuff on the stage to the LAST commit
+    the new commit message will overwrite the oringinal one
+
+
+
+COMPLETELY DELETING A COMMIT
+
+$ git reset --hard HEAD^
+--> undo last commit and all changes (as if never been there)
+
+$ git reset --hard HEAD^^
+--> undo last 2 commits and all changes
+
+
+
+SHARING A REPOSITORY
+
+I "push" local repo up to remote repo
+Others "pull" remote repo down, do changes and push up again
+
+Create a remote repo on github
+Give it a name (any)
+Specify some basic settings (private/public, etc.)
+Retrieve a URL of this remote repo
+
+
+
+ADDING A REMOTE REPO
+
+$ git remote add repo_name https://github.com/username/reponame.git
+--> URL provided by github after creating repo online
+
+$ git remote -v
+--> shows a list of all remote repos associated with this local repo
+
+
+
+PUSHING TO REMOTE REPO
+
+$ git push -u remote_repo_name local_branch_name
+--> pushes the whole local repo to the remote repo
+    asks for username and password for github.com
+    PW can be cached -- help.github.com/articles/set-up-git
+
+
+
+PULLING FROM REMOTE REPO
+
+$ git pull
+--> goes to github.com gets all changes and syncs them with local repo
+
+
+
+HAVING MULTIPLE REMOTES
+
+example: developing locally on computer, on one server you have the
+production environment, on another a test environment and the repo
+on github.com
+
+$ git remote add <name> <address>
+--> add new remotes
+
+$ git remote rm <name>
+--> remove remotes
+
+$ git push -u <name> <branch>
+--> push to remotes
+    -u makes git remember name and branch, so next time you only have
+    to type $ git push
+
+
+
+
+
+
+====================
+--- L E V E L  3 ---
+====================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -49,7 +49,7 @@ $ cd any_name
 
 $ git init
 --> initializes a local Git repository in current directory
-    git metadata is store in hidden file (/Users/SH/any_name/.git/)
+    git metadata is stored in hidden file (/Users/SH/any_name/.git/)
 
 
 
@@ -275,7 +275,7 @@ $ git branch
 SWITCHING TO A BRANCH
 
 After creating a new branch the HEAD is still on master.
-You want to junmp to the new branch.
+You want to jump to the new branch.
 
 $ git checkout <newBranch>
 --> switch to branch "newBranch"
@@ -353,6 +353,14 @@ then switch back to branch master
 
 $ git checkout master
 
+
+
+
+
+
+====================
+--- L E V E L  4 ---
+====================
 
 
 
